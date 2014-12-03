@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% load static %} <!-- This allows us to call the static template tag -->
+<html>
+
+	<head>
+	 <title>About</title>
+	</head>
+
+	<body>
+		<h1>Welcome to About Page!</h1>
+		hello world! <strong>{{boldmessage}}</strong><br/>
+		<a href="/rango/">Home<a><br/>
+		<img src="{% static "about.png" %}" alt="About "/>
+	</body>
+
+</html>
