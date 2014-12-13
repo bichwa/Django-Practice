@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse # We import HttpResponse Object from django.http module
 from rango.models import Page
-
+from django.template import Context, loader
 #Each view exists  within views.py as a series of individual functions hence index view.# Each view takes in atleast one arguement. Convention dictates that this is named request
 
 def index(request):
@@ -69,3 +69,11 @@ def category(request, category_name_url):
 		pass
 
 	return render_to_response('rango/category.html', context_dict, context)
+
+def contact(request):
+	pages_present = Page.objects.all()
+	t = loader.get_template('rango/page.html')
+	c = Context({'pages_present': pages_present})
+	return HttpResponse(t.render(c))
+
+	
